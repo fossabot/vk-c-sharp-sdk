@@ -4,16 +4,21 @@ using Vk.CSharp.Sdk.Core.Models;
 
 namespace Vk.CSharp.Sdk.Core.Directors
 {
-    internal class RequestBuildDirector<TModule, TParameters> : IRequestBuildDirector<TParameters>
-        where TModule : class
+    internal class RequestBuildDirector<TParameters> : IRequestBuildDirector<TParameters>
         where TParameters : class
     {
         public IRequestBuilder<TParameters> Builder { get; set; }
 
-        public Request Construct(RequestBuilderData<TParameters> data)
+        public RequestBuildDirector(IRequestBuilder<TParameters> builder)
+        {
+            Builder = builder;
+        }
+
+        public Request Construct(ConstructionData<TParameters> data)
         {
             return Builder
                 .Initialize(data)
+                .BuildPath()
                 .BuildSection()
                 .BuildQuestionMark()
                 .BuildParameters()

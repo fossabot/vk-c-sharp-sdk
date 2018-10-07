@@ -7,6 +7,6 @@ namespace Vk.CSharp.Sdk.Core.Directors.Interfaces
     {
         IRequestBuilder<TParameters> Builder { get; set; }
 
-        Request Construct(RequestBuilderData<TParameters> data);
+        Request Construct(ConstructionData<TParameters> data);
     }
 }

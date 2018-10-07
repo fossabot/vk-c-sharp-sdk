@@ -4,7 +4,7 @@ namespace Vk.CSharp.Sdk.Core.Builders.Interfaces
 {
     internal interface IRequestBuilder<TParameters> where TParameters : class
     {
-        IRequestBuilder<TParameters> Initialize(RequestBuilderData<TParameters> data);
+        IRequestBuilder<TParameters> Initialize(ConstructionData<TParameters> data);
 
         IRequestBuilder<TParameters> BuildPath();
 

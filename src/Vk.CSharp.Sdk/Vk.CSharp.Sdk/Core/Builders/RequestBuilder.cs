@@ -10,11 +10,11 @@ namespace Vk.CSharp.Sdk.Core.Builders
         where TModule : class
         where TParameters : class
     {
-        protected RequestBuilderData<TParameters> Data { get; set; }
+        protected ConstructionData<TParameters> Data { get; set; }
 
         protected StringBuilder StringBuilder { get; set; }
 
-        public IRequestBuilder<TParameters> Initialize(RequestBuilderData<TParameters> data)
+        public IRequestBuilder<TParameters> Initialize(ConstructionData<TParameters> data)
         {
             Data = data ?? throw new ArgumentNullException(nameof(data));
 
