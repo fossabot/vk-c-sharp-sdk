@@ -16,8 +16,4 @@
     <ProjectReference Include="..\Vk.CSharp.Sdk\Vk.CSharp.Sdk.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Source\Models\" />
-  </ItemGroup>
-
 </Project>

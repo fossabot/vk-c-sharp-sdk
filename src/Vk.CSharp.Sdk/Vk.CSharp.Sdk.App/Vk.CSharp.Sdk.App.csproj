@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Vk.CSharp.Sdk\Vk.CSharp.Sdk.csproj" />
+  </ItemGroup>
+
 </Project>

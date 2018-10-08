@@ -1,4 +1,6 @@
 ﻿using System;
+using Vk.CSharp.Sdk.Home;
+using Vk.CSharp.Sdk.Home.Models;
 
 namespace Vk.CSharp.Sdk.App.Source
 {
@@ -6,8 +8,23 @@ namespace Vk.CSharp.Sdk.App.Source
     {
         private static void Main()
         {
-            Console.WriteLine("vk-c-sharp-sdk");
+            VkApiProvider.Get()
+                .Authorize(new AuthorizationData("access_token"));
+
+            VkApiProvider.Get()
+                .GetAccount()
+                .Ban();
+
+            Console.WriteLine(GetAccessToken());
+
             Console.ReadKey();
+        }
+
+        private static string GetAccessToken()
+        {
+            return VkApiProvider.Get()
+                .GetEnvironment()
+                .AccessToken;
         }
     }
 }
