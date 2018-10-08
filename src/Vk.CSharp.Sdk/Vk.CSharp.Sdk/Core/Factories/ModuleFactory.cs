@@ -1,12 +1,14 @@
 ﻿using System;
+using Vk.CSharp.Sdk.Core.Components;
 using Vk.CSharp.Sdk.Core.Factories.Interfaces;
+using Vk.CSharp.Sdk.Core.Mappers;
 using Vk.CSharp.Sdk.Core.Modules;
 
 namespace Vk.CSharp.Sdk.Core.Factories
 {
     internal class ModuleFactory : IModuleFactory
     {
-        public TModule Get<TModule>() where TModule : class, new()
+        public TModule Get<TModule>() where TModule : class
         {
             if (typeof(TModule) == typeof(Account))
                 return CreateAccount() as TModule;
@@ -28,27 +30,27 @@ namespace Vk.CSharp.Sdk.Core.Factories
 
         private static Account CreateAccount()
         {
-            return new Account();
+            return new Account(new MapperAccount(new Converter()));
         }
 
         private static Ads CreateAds()
         {
-            return new Ads();
+            return new Ads(new MapperAds(new Converter()));
         }
 
         private static Apps CreateApps()
         {
-            return new Apps();
+            return new Apps(new MapperApps(new Converter()));
         }
 
         private static Board CreateBoard()
         {
-            return new Board();
+            return new Board(new MapperBoard(new Converter()));
         }
 
         private static Database CreateDatabase()
         {
-            return new Database();
+            return new Database(new MapperDatabase(new Converter()));
         }
     }
 }

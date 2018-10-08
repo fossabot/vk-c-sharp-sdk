@@ -2,6 +2,6 @@
 {
     internal interface IModuleFactory
     {
-        TModule Get<TModule>() where TModule : class, new();
+        TModule Get<TModule>() where TModule : class;
     }
 }
