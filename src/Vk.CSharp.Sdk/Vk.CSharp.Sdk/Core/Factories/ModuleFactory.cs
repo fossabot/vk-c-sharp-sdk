@@ -3,54 +3,60 @@ using Vk.CSharp.Sdk.Core.Components;
 using Vk.CSharp.Sdk.Core.Factories.Interfaces;
 using Vk.CSharp.Sdk.Core.Mappers;
 using Vk.CSharp.Sdk.Core.Modules;
+using Vk.CSharp.Sdk.Home.Models;
 
 namespace Vk.CSharp.Sdk.Core.Factories
 {
     internal class ModuleFactory : IModuleFactory
     {
-        public TModule Get<TModule>() where TModule : class
+        public TModule Get<TModule>(VkApiEnvironment environment) where TModule : class
         {
             if (typeof(TModule) == typeof(Account))
-                return CreateAccount() as TModule;
+                return CreateAccount(environment) as TModule;
 
             if (typeof(TModule) == typeof(Ads))
-                return CreateAds() as TModule;
+                return CreateAds(environment) as TModule;
 
             if (typeof(TModule) == typeof(Apps))
-                return CreateApps() as TModule;
+                return CreateApps(environment) as TModule;
 
             if (typeof(TModule) == typeof(Board))
-                return CreateBoard() as TModule;
+                return CreateBoard(environment) as TModule;
 
             if (typeof(TModule) == typeof(Database))
-                return CreateDatabase() as TModule;
+                return CreateDatabase(environment) as TModule;
 
             throw new ArgumentOutOfRangeException(typeof(TModule).Name);
         }
 
-        private static Account CreateAccount()
+        private static Account CreateAccount(VkApiEnvironment environment)
         {
-            return new Account(new MapperAccount(new Converter()));
+            return new Account(new MapperAccount(new Converter()))
+                .SetEnvironment(environment) as Account;
         }
 
-        private static Ads CreateAds()
+        private static Ads CreateAds(VkApiEnvironment environment)
         {
-            return new Ads(new MapperAds(new Converter()));
+            return new Ads(new MapperAds(new Converter()))
+                .SetEnvironment(environment) as Ads;
         }
 
-        private static Apps CreateApps()
+        private static Apps CreateApps(VkApiEnvironment environment)
         {
-            return new Apps(new MapperApps(new Converter()));
+            return new Apps(new MapperApps(new Converter()))
+                .SetEnvironment(environment) as Apps;
         }
 
-        private static Board CreateBoard()
+        private static Board CreateBoard(VkApiEnvironment environment)
         {
-            return new Board(new MapperBoard(new Converter()));
+            return new Board(new MapperBoard(new Converter()))
+                .SetEnvironment(environment) as Board;
         }
 
-        private static Database CreateDatabase()
+        private static Database CreateDatabase(VkApiEnvironment environment)
         {
-            return new Database(new MapperDatabase(new Converter()));
+            return new Database(new MapperDatabase(new Converter()))
+                .SetEnvironment(environment) as Database;
         }
     }
 }

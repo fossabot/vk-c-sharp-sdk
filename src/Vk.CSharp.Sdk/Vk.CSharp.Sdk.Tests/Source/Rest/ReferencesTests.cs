@@ -56,5 +56,23 @@ namespace Vk.CSharp.Sdk.Tests.Source.Rest
 
             Assert.Equal(vkA, vkB);
         }
+
+        [Fact]
+        public void VkApiProvider_VkApi_Modules_References()
+        {
+            var moduleA = VkApiProvider.Get()
+                .GetAccount();
+
+            var moduleB = VkApiProvider.Get()
+                .GetAccount();
+
+            Assert.Equal(moduleA, moduleB);
+
+            var moduleC = VkApiProvider.Get(InstanceMode.New)
+                .GetAccount();
+
+            Assert.NotEqual(moduleA, moduleC);
+            Assert.NotEqual(moduleB, moduleC);
+        }
     }
 }

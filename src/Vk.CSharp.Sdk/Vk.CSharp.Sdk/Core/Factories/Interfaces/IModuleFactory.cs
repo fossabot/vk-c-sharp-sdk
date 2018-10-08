@@ -1,7 +1,9 @@
-﻿namespace Vk.CSharp.Sdk.Core.Factories.Interfaces
+﻿using Vk.CSharp.Sdk.Home.Models;
+
+namespace Vk.CSharp.Sdk.Core.Factories.Interfaces
 {
     internal interface IModuleFactory
     {
-        TModule Get<TModule>() where TModule : class;
+        TModule Get<TModule>(VkApiEnvironment environment) where TModule : class;
     }
 }

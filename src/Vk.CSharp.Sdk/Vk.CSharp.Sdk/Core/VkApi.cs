@@ -18,7 +18,7 @@ namespace Vk.CSharp.Sdk.Core
     {
         protected IModuleFactory ModuleFactory { get; }
 
-        protected VkApiEnvironment Environment { get; set; }
+        protected VkApiEnvironment Environment { get; }
             = new VkApiEnvironment(VkApiVersion.V585);
 
         protected Lazy<IAccount> LazyAccount { get; }
@@ -31,11 +31,11 @@ namespace Vk.CSharp.Sdk.Core
         {
             ModuleFactory = moduleFactory;
 
-            LazyAccount = new Lazy<IAccount>(() => ModuleFactory.Get<Account>());
-            LazyAds = new Lazy<IAds>(() => ModuleFactory.Get<Ads>());
-            LazyApps = new Lazy<IApps>(() => ModuleFactory.Get<Apps>());
-            LazyBoard = new Lazy<IBoard>(() => ModuleFactory.Get<Board>());
-            LazyDatabase = new Lazy<IDatabase>(() => ModuleFactory.Get<Database>());
+            LazyAccount = new Lazy<IAccount>(() => ModuleFactory.Get<Account>(Environment));
+            LazyAds = new Lazy<IAds>(() => ModuleFactory.Get<Ads>(Environment));
+            LazyApps = new Lazy<IApps>(() => ModuleFactory.Get<Apps>(Environment));
+            LazyBoard = new Lazy<IBoard>(() => ModuleFactory.Get<Board>(Environment));
+            LazyDatabase = new Lazy<IDatabase>(() => ModuleFactory.Get<Database>(Environment));
         }
 
         public VkApiEnvironment GetEnvironment()
