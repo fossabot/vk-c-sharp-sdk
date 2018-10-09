@@ -1,7 +1,7 @@
 ﻿using Vk.CSharp.Sdk.Core.Builders;
 using Vk.CSharp.Sdk.Core.Directors;
 using Vk.CSharp.Sdk.Core.Directors.Interfaces;
-using Vk.CSharp.Sdk.Core.Mappers.Interfaces;
+using Vk.CSharp.Sdk.Core.Wrappers.Interfaces;
 using Vk.CSharp.Sdk.Home.Models;
 
 namespace Vk.CSharp.Sdk.Core.Modules.Base
@@ -10,11 +10,11 @@ namespace Vk.CSharp.Sdk.Core.Modules.Base
     {
         protected VkApiEnvironment Environment { get; private set; }
 
-        protected IMapperModule Mapper { get; }
+        protected IRequestExecutionWrapper RequestExecutionWrapper { get; }
 
-        protected Module(IMapperModule mapper)
+        protected Module(IRequestExecutionWrapper requestExecutionWrapper)
         {
-            Mapper = mapper;
+            RequestExecutionWrapper = requestExecutionWrapper;
         }
 
         public Module<TModule> SetEnvironment(VkApiEnvironment environment)

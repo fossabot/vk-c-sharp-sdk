@@ -1,8 +1,10 @@
 ﻿using System;
+using AutoMapper;
 using Vk.CSharp.Sdk.Core.Components;
 using Vk.CSharp.Sdk.Core.Factories.Interfaces;
 using Vk.CSharp.Sdk.Core.Mappers;
 using Vk.CSharp.Sdk.Core.Modules;
+using Vk.CSharp.Sdk.Core.Wrappers;
 using Vk.CSharp.Sdk.Home.Models;
 
 namespace Vk.CSharp.Sdk.Core.Factories
@@ -31,31 +33,61 @@ namespace Vk.CSharp.Sdk.Core.Factories
 
         private static Account CreateAccount(VkApiEnvironment environment)
         {
-            return new Account(new MapperAccount(new Converter()))
+            IRuntimeMapper CreateMapper() =>
+                new MapperAccount(new Converter()).Mapper;
+
+            RequestExecutionWrapper CreateWrapper() =>
+                new RequestExecutionWrapper(new Browser(), CreateMapper());
+
+            return new Account(CreateWrapper())
                 .SetEnvironment(environment) as Account;
         }
 
         private static Ads CreateAds(VkApiEnvironment environment)
         {
-            return new Ads(new MapperAds(new Converter()))
+            IRuntimeMapper CreateMapper() =>
+                new MapperAds(new Converter()).Mapper;
+
+            RequestExecutionWrapper CreateWrapper() =>
+                new RequestExecutionWrapper(new Browser(), CreateMapper());
+
+            return new Ads(CreateWrapper())
                 .SetEnvironment(environment) as Ads;
         }
 
         private static Apps CreateApps(VkApiEnvironment environment)
         {
-            return new Apps(new MapperApps(new Converter()))
+            IRuntimeMapper CreateMapper() =>
+                new MapperApps(new Converter()).Mapper;
+
+            RequestExecutionWrapper CreateWrapper() =>
+                new RequestExecutionWrapper(new Browser(), CreateMapper());
+
+            return new Apps(CreateWrapper())
                 .SetEnvironment(environment) as Apps;
         }
 
         private static Board CreateBoard(VkApiEnvironment environment)
         {
-            return new Board(new MapperBoard(new Converter()))
+            IRuntimeMapper CreateMapper() =>
+                new MapperBoard(new Converter()).Mapper;
+
+            RequestExecutionWrapper CreateWrapper() =>
+                new RequestExecutionWrapper(new Browser(), CreateMapper());
+
+            return new Board(CreateWrapper())
                 .SetEnvironment(environment) as Board;
         }
 
         private static Database CreateDatabase(VkApiEnvironment environment)
         {
-            return new Database(new MapperDatabase(new Converter()))
+            IRuntimeMapper CreateMapper() =>
+                new MapperDatabase(new Converter()).Mapper;
+
+            RequestExecutionWrapper CreateWrapper() =>
+                new RequestExecutionWrapper(new Browser(), CreateMapper());
+
+            return new Database(CreateWrapper())
                 .SetEnvironment(environment) as Database;
         }
     }
