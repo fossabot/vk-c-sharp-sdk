@@ -1,7 +1,7 @@
 ﻿using System;
+using Vk.CSharp.Sdk.App.Executors;
 using Vk.CSharp.Sdk.Home;
 using Vk.CSharp.Sdk.Home.Models;
-using Vk.CSharp.Sdk.Home.Models.Parameters.Account;
 
 namespace Vk.CSharp.Sdk.App.Source
 {
@@ -15,21 +15,26 @@ namespace Vk.CSharp.Sdk.App.Source
             VkApiProvider.Get()
                 .Authorize(new AuthorizationData(AccessToken));
 
-            var response = VkApiProvider.Get()
-                .GetAccount()
-                .Ban(new BanParameters { OwnerId = 95167253 });
-
-            Console.WriteLine(response.Result);
-            Console.WriteLine(GetAccessToken());
+            Account();
 
             Console.ReadKey();
         }
 
-        private static string GetAccessToken()
+        private static void Account()
         {
-            return VkApiProvider.Get()
-                .GetEnvironment()
-                .AccessToken;
+            Handle(ExecutorAccount.Ban);
+        }
+
+        private static void Handle(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
