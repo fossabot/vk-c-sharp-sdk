@@ -8,7 +8,7 @@ namespace Vk.CSharp.Sdk.Tests.Source.Rest
     public class ReferencesTests
     {
         [Fact]
-        public void VkApiProvider_VkApiEnvironment_References()
+        public void VkApiProvider_VkApi_Environment_References()
         {
             var environmentA = VkApiProvider.Get()
                 .GetEnvironment();

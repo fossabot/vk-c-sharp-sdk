@@ -15,19 +15,51 @@ namespace Vk.CSharp.Sdk.Tests.Source.Rest
         [Fact]
         public void RequestBuildDirector_RequestBuilder_Empty_Parameters()
         {
-            var director = new RequestBuildDirector<MockParameters>(
-                new RequestBuilder<MoqModule, MockParameters>()
+            var director = new RequestBuildDirector<MockEmptyParameters>(
+                new RequestBuilder<MockModule, MockEmptyParameters>()
             );
 
             var value = "https://api.vk.com/method/" +
-                $"moqModule.method?access_token={AccessToken}&v={Version}";
+                $"mockModule.method?access_token={AccessToken}&v={Version}";
+
+            var data = new ConstructionData<MockEmptyParameters>
+            {
+                AccessToken = AccessToken,
+                Version = Version,
+                MethodName = nameof(MockModule.Method),
+                Parameters = new MockEmptyParameters()
+            };
+
+            var request = director.Construct(data);
+
+            Assert.Equal(data.MethodName, request.MethodName);
+            Assert.Equal(data.Version, request.Version);
+            Assert.Equal(value, request.Value);
+        }
+
+        [Fact]
+        public void RequestBuildDirector_RequestBuilder_Parameters()
+        {
+            var director = new RequestBuildDirector<MockParameters>(
+                new RequestBuilder<MockModule, MockParameters>()
+            );
+
+            var value = "https://api.vk.com/method/" +
+                        $"mockModule.method?name=victor&age=20&" +
+                        $"access_token={AccessToken}&v={Version}";
+
+            var parameters = new MockParameters
+            {
+                Name = "victor",
+                Age = 20
+            };
 
             var data = new ConstructionData<MockParameters>
             {
                 AccessToken = AccessToken,
                 Version = Version,
-                MethodName = nameof(MoqModule.Method),
-                Parameters = new MockParameters()
+                MethodName = nameof(MockModule.Method),
+                Parameters = parameters
             };
 
             var request = director.Construct(data);
