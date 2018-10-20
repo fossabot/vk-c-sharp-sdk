@@ -6,7 +6,7 @@
     public class BanResponse
     {
         /// <summary>
-        /// Признак того, что результат был выполнено успешно.
+        /// Признак того, что запрос был выполнен успешно.
         /// </summary>
         public bool Result { get; set; }
     }
