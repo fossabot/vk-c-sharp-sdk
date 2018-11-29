@@ -4,6 +4,7 @@ using Vk.CSharp.Sdk.Core.Directors.Interfaces;
 using Vk.CSharp.Sdk.Core.Extensions;
 using Vk.CSharp.Sdk.Core.Models;
 using Vk.CSharp.Sdk.Core.Wrappers.Interfaces;
+using Vk.CSharp.Sdk.Home.Exceptions;
 using Vk.CSharp.Sdk.Home.Models;
 
 namespace Vk.CSharp.Sdk.Core.Modules.Base
@@ -44,6 +45,17 @@ namespace Vk.CSharp.Sdk.Core.Modules.Base
                 Parameters = parameters,
                 MethodName = methodName
             };
+        }
+
+        protected void ValidateEnvironment()
+        {
+            // TODO: Добавить описание.
+
+            if (Environment.NotExists())
+                throw new EnvironmentException();
+            
+            if (Environment.AccessTokenNotExists())
+                throw new AccessTokenException();
         }
     }
 }

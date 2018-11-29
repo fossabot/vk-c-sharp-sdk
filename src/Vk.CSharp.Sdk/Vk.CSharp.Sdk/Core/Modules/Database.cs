@@ -22,6 +22,8 @@ namespace Vk.CSharp.Sdk.Core.Modules
 
         public async Task<ResponseGetChairs> GetChairsAsync(ParametersGetChairs parameters)
         {
+            ValidateEnvironment();
+
             var request = CreateRequestBuildDirector<ParametersGetChairs>()
                 .Construct(CreateConstructionData(parameters, nameof(GetChairs)));
 

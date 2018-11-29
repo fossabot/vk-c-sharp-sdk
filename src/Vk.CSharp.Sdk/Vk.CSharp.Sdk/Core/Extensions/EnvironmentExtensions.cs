@@ -5,7 +5,7 @@ namespace Vk.CSharp.Sdk.Core.Extensions
 {
     internal static class EnvironmentExtensions
     {
-        public static VkApiEnvironment ResetEnvironment(this VkApiEnvironment environment)
+        public static VkApiEnvironment Reset(this VkApiEnvironment environment)
             => environment = new VkApiEnvironment(environment.Version);
 
         public static VkApiEnvironment SetAccessToken(this VkApiEnvironment environment, string accessToken)
@@ -17,5 +17,17 @@ namespace Vk.CSharp.Sdk.Core.Extensions
 
             return environment;
         }
+
+        public static bool Exists(this VkApiEnvironment environment)
+            => environment != null;
+
+        public static bool NotExists(this VkApiEnvironment environment)
+            => environment == null;
+
+        public static bool AccessTokenExists(this VkApiEnvironment environment) =>
+            string.IsNullOrWhiteSpace(environment.AccessToken) == false;
+
+        public static bool AccessTokenNotExists(this VkApiEnvironment environment) =>
+            string.IsNullOrWhiteSpace(environment.AccessToken);
     }
 }

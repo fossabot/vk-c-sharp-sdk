@@ -21,6 +21,8 @@ namespace Vk.CSharp.Sdk.Core.Modules
 
         public async Task<ResponseBan> BanAsync(ParametersBan parameters)
         {
+            ValidateEnvironment();
+
             var request = CreateRequestBuildDirector<ParametersBan>()
                 .Construct(CreateConstructionData(parameters, nameof(Ban)));
 

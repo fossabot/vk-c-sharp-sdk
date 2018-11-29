@@ -56,7 +56,7 @@ namespace Vk.CSharp.Sdk.Core
 
         public void Deauthorize()
         {
-            Environment.ResetEnvironment();
+            Environment.Reset();
         }
 
         public IAccount GetAccount() => LazyAccount.Value;
