@@ -14,11 +14,11 @@ namespace Vk.CSharp.Sdk.Home.Modules
         /// <summary>
         /// Добавляет пользователя или группу в черный список.
         /// </summary>
-        BanResponse Ban(BanParameters parameters);
+        ResponseBan Ban(ParametersBan parameters);
 
         /// <summary>
         /// Добавляет пользователя или группу в черный список.
         /// </summary>
-        Task<BanResponse> BanAsync(BanParameters parameters);
+        Task<ResponseBan> BanAsync(ParametersBan parameters);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Vk.CSharp.Sdk.Core.Extensions;
 using Vk.CSharp.Sdk.Core.Modules.Base;
 using Vk.CSharp.Sdk.Core.Wrappers.Interfaces;
 using Vk.CSharp.Sdk.Home.Models.Parameters.Account;
@@ -15,18 +16,19 @@ namespace Vk.CSharp.Sdk.Core.Modules
             : base(wrapper)
         { }
 
-        public BanResponse Ban(BanParameters parameters)
-            => BanAsync(parameters).GetAwaiter().GetResult();
+        public ResponseBan Ban(ParametersBan parameters)
+            => BanAsync(parameters).GetResult();
 
-        public async Task<BanResponse> BanAsync(BanParameters parameters)
+        public async Task<ResponseBan> BanAsync(ParametersBan parameters)
         {
-            var request = CreateRequestBuildDirector<BanParameters>()
+            var request = CreateRequestBuildDirector<ParametersBan>()
                 .Construct(CreateConstructionData(parameters, nameof(Ban)));
 
-            return new BanResponse
+            return new ResponseBan
             {
                 Result = await RequestExecutionWrapper
                     .ExecuteAsync<int, bool>(request)
+                    .ConfigureAwait(false)
             };
         }
     }

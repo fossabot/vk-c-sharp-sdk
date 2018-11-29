@@ -10,7 +10,7 @@ namespace Vk.CSharp.Sdk.App.Executors
         {
             var response = VkApiProvider.Get()
                 .GetAccount()
-                .Ban(new BanParameters { OwnerId = 95167253 });
+                .Ban(new ParametersBan { OwnerId = 95167253 });
 
             Console.WriteLine(response.Result);
         }

@@ -2,10 +2,7 @@
 
 namespace Vk.CSharp.Sdk.Home.Models.Parameters.Account
 {
-    /// <summary>
-    /// Параметры типа <see cref="BanParameters" />.
-    /// </summary>
-    public class BanParameters
+    public class ParametersBan
     {
         /// <summary>
         /// Идентификатор пользователя или сообщества.
