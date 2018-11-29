@@ -1,4 +1,5 @@
 ﻿using System;
+using Vk.CSharp.Sdk.App.Components;
 using Vk.CSharp.Sdk.App.Executors;
 using Vk.CSharp.Sdk.Home;
 using Vk.CSharp.Sdk.Home.Models;
@@ -8,33 +9,27 @@ namespace Vk.CSharp.Sdk.App.Source
     internal class Program
     {
         private const string AccessToken =
-            "61875237abc029f803f45e9120b5fd03d03976977943c8d4bb1527c2906a89956286107429b8eb823e0d5";
+            "ef96fdb07b63e21ef48b6c91d9d6aa0513a2abbce771fc5689534e57e6d1998d22def1cac477c41a7e2cf";
 
         private static void Main()
         {
             VkApiProvider.Get()
                 .Authorize(new AuthorizationData(AccessToken));
 
-            Account();
+            // Account();
+            // Database();
 
             Console.ReadKey();
         }
 
         private static void Account()
         {
-            Handle(ExecutorAccount.Ban);
+            Handler.Handle(ExecutorAccount.Ban);
         }
 
-        private static void Handle(Action action)
+        private static void Database()
         {
-            try
-            {
-                action();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            Handler.Handle(ExecutorDatabase.GetChairs);
         }
     }
 }

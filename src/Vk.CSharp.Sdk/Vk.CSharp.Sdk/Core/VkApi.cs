@@ -19,7 +19,7 @@ namespace Vk.CSharp.Sdk.Core
         protected IModuleFactory ModuleFactory { get; }
 
         protected VkApiEnvironment Environment { get; }
-            = new VkApiEnvironment(VkApiVersion.V585);
+            = new VkApiEnvironment(VkApiVersion.V592);
 
         protected Lazy<IAccount> LazyAccount { get; }
         protected Lazy<IAds> LazyAds { get; }
