@@ -40,6 +40,42 @@ namespace Vk.CSharp.Sdk.Home.Enums
         /// Версия: 5.85.
         /// </summary>
         [EnumValue("5.85")]
-        V585
+        V585,
+
+        /// <summary>
+        /// Версия: 5.86.
+        /// </summary>
+        [EnumValue("5.86")]
+        V586,
+
+        /// <summary>
+        /// Версия: 5.87.
+        /// </summary>
+        [EnumValue("5.87")]
+        V587,
+
+        /// <summary>
+        /// Версия: 5.88.
+        /// </summary>
+        [EnumValue("5.88")]
+        V588,
+
+        /// <summary>
+        /// Версия: 5.89.
+        /// </summary>
+        [EnumValue("5.89")]
+        V589,
+
+        /// <summary>
+        /// Версия: 5.90.
+        /// </summary>
+        [EnumValue("5.90")]
+        V590,
+
+        /// <summary>
+        /// Версия: 5.92.
+        /// </summary>
+        [EnumValue("5.92")]
+        V592
     }
 }
